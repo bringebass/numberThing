@@ -1,42 +1,50 @@
-html {
-  font-family: sans-serif;
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-form {
-  margin: 3rem;
-  padding: 1rem;
-  border: 1px solid #ccc;
+.button, .button2, .button3 {
+  background-color: blue;
+  width: fit-content;
+  padding: 10px;
+  cursor: pointer;
+  color: white;
+  font-size: large;
+  margin-top: 20px;
 }
 
-.form-control {
-  margin: 1rem 0;
+.yoyo {
+  height: 300px;
+  width: 300px;
+  background-color: brown;
+  color: white;
+  font-size: 20px;
+  margin: 40px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-label, input {
+.form_container {
+  margin: 20px 0px;
+  border: solid lightgray 1px;
+  padding: 20px;
+  width: fit-content;
+  display: none;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.show {
   display: block;
 }
 
-label {
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-}
-
-input {
-  font: inherit;
-  padding: 0.15rem 0.2rem;
-  border: 1px solid #ccc;
-}
-
-input:focus {
-  outline: none;
-  background: #e0e0e0;
-}
-
-button {
-  font: inherit;
+.form_button {
+  margin-top: 20px;
   cursor: pointer;
-  background: #000057;
-  color: white;
-  border: 1px solid #000057;
-  padding: 1rem 2rem;
 }
