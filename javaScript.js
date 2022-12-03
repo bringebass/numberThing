@@ -217,24 +217,39 @@ const main = document.querySelector('.main')
 const formContainer = document.querySelector('.form_container')
 const formButton = document.querySelector('.form_button')
 const form = document.querySelector('.form')
+const toggleButton = document.getElementById('test')
 
 let myLibrary = []
 
-function Books(title, author, pages) {
+function Books(title, author, pages, status) {
   this.title = title
   this.author = author
   this.pages = pages
+  this.status = status
+}
+
+Books.prototype.changeStatus = function () {
+  if (this.status === 'unread') {
+    this.status = 'read'
+  } else if (this.status === 'read') {
+    this.status = 'unread'
+  }
+  doIt()
 }
 
 function addBookToLibrary(...args) {
   myLibrary.push(...args)
-  doIt()
+  doIt(...args)
 }
 
 function buttonClicked(param) {
   main.removeChild(main.children[param])
   myLibrary.splice(param, 1)
-  console.log(myLibrary)
+}
+
+function testo(index) {
+  myLibrary[index].changeStatus()
+  console.log(myLibrary[index])
 }
 
 function doIt() {
@@ -242,7 +257,7 @@ function doIt() {
   myLibrary.forEach((item, index) => {
     let element = document.createElement('div')
     element.className = 'yoyo'
-    element.innerHTML = `<div><h1>BOOK</h1> Title: ${item.title} </br> Author: ${item.author} </br> Pages: ${item.pages} </br>  <button onclick="buttonClicked(${index})">Try it</button> </div>`
+    element.innerHTML = `<div><h1>BOOK</h1> Title: ${item.title} </br> Author: ${item.author} </br> Pages: ${item.pages} </br> <button class='testClass' onclick="buttonClicked(${index})">Delete book</button> </br> <button id=test onclick="testo(${index})">${item.status}</button> </div>`
     main.appendChild(element)
   })
 }
@@ -253,17 +268,11 @@ button.addEventListener('click', () => {
 
 formButton.addEventListener('click', event => {
   event.preventDefault()
-  let book = {
-    title: form.title.value,
-    author: form.author.value,
-    pages: form.pages.value,
-  }
+  let status = 'unread'
+  let book = new Books(form.title.value, form.author.value, form.pages.value, status)
+
   addBookToLibrary(book)
   form.title.value = ''
   form.author.value = ''
   form.pages.value = ''
 })
-
-function removeFunc() {
-  console.log('test')
-}
