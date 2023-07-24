@@ -56,7 +56,6 @@ body {
 }
 
 .newClass {
-  color: red;
+  color: blue;
   margin: 2px;
-  font: bold;
 }
