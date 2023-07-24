@@ -212,67 +212,139 @@
 
 // ----------------------------------------------------------
 
-const button = document.querySelector('.button')
-const main = document.querySelector('.main')
-const formContainer = document.querySelector('.form_container')
-const formButton = document.querySelector('.form_button')
-const form = document.querySelector('.form')
-const toggleButton = document.getElementById('test')
+// ---------------------------------// Add book-program -------------------
 
-let myLibrary = []
+// const button = document.querySelector('.button')
+// const main = document.querySelector('.main')
+// const formContainer = document.querySelector('.form_container')
+// const formButton = document.querySelector('.form_button')
+// const form = document.querySelector('.form')
+// const toggleButton = document.getElementById('test')
 
-function Books(title, author, pages, status) {
-  this.title = title
-  this.author = author
-  this.pages = pages
-  this.status = status
-}
+// let myLibrary = []
 
-Books.prototype.changeStatus = function () {
-  if (this.status === 'unread') {
-    this.status = 'read'
-  } else if (this.status === 'read') {
-    this.status = 'unread'
-  }
-  doIt()
-}
+// function Books(title, author, pages, status) {
+//   this.title = title
+//   this.author = author
+//   this.pages = pages
+//   this.status = status
+// }
 
-function addBookToLibrary(...args) {
-  myLibrary.push(...args)
-  doIt(...args)
-}
+// Books.prototype.changeStatus = function () {
+//   if (this.status === 'unread') {
+//     this.status = 'read'
+//   } else if (this.status === 'read') {
+//     this.status = 'unread'
+//   }
+//   doIt()
+// }
 
-function buttonClicked(param) {
-  main.removeChild(main.children[param])
-  myLibrary.splice(param, 1)
-}
+// function addBookToLibrary(...args) {
+//   myLibrary.push(...args)
+//   doIt(...args)
+// }
 
-function testo(index) {
-  myLibrary[index].changeStatus()
-  console.log(myLibrary[index])
-}
+// function buttonClicked(param) {
+//   main.removeChild(main.children[param])
+//   myLibrary.splice(param, 1)
+// }
 
-function doIt() {
-  main.innerHTML = ''
-  myLibrary.forEach((item, index) => {
-    let element = document.createElement('div')
-    element.className = 'yoyo'
-    element.innerHTML = `<div><h1>BOOK</h1> Title: ${item.title} </br> Author: ${item.author} </br> Pages: ${item.pages} </br> <button class='testClass' onclick="buttonClicked(${index})">Delete book</button> </br> <button id=test onclick="testo(${index})">${item.status}</button> </div>`
-    main.appendChild(element)
-  })
-}
+// function testo(index) {
+//   myLibrary[index].changeStatus()
+//   console.log(myLibrary[index])
+// }
 
-button.addEventListener('click', () => {
-  formContainer.classList.toggle('show')
-})
+// function doIt() {
+//   main.innerHTML = ''
+//   myLibrary.forEach((item, index) => {
+//     let element = document.createElement('div')
+//     element.className = 'yoyo'
+//     element.innerHTML = `<div><h1>BOOK</h1> Title: ${item.title} </br> Author: ${item.author} </br> Pages: ${item.pages} </br> <button class='testClass' onclick="buttonClicked(${index})">Delete book</button> </br> <button id=test onclick="testo(${index})">${item.status}</button> </div>`
+//     main.appendChild(element)
+//   })
+// }
 
-formButton.addEventListener('click', event => {
-  event.preventDefault()
-  let status = 'unread'
-  let book = new Books(form.title.value, form.author.value, form.pages.value, status)
+// button.addEventListener('click', () => {
+//   formContainer.classList.toggle('show')
+// })
 
-  addBookToLibrary(book)
-  form.title.value = ''
-  form.author.value = ''
-  form.pages.value = ''
-})
+// formButton.addEventListener('click', event => {
+//   event.preventDefault()
+//   let status = 'unread'
+//   let book = new Books(form.title.value, form.author.value, form.pages.value, status)
+
+//   addBookToLibrary(book)
+//   form.title.value = ''
+//   form.author.value = ''
+//   form.pages.value = ''
+// })
+
+// ------------------------ end of add book program -----------------------------
+
+// class Animal {
+//   constructor(name, energy) {
+//     this.name = name
+//     this.energy = energy
+//   }
+//   eat(amount) {
+//     console.log(`${this.name} is eating.`)
+//     this.energy += amount
+//   }
+//   sleep(length) {
+//     console.log(`${this.name} is sleeping.`)
+//     this.energy += length
+//   }
+//   play(length) {
+//     console.log(`${this.name} is playing.`)
+//     this.energy -= length
+//   }
+//   static nextToEat(animals) {
+//     const sortedByLeastEnergy = animals.sort((a, b) => {
+//       return a.energy - b.energy
+//     })
+
+//     return sortedByLeastEnergy[0].name
+//   }
+// }
+
+// console.dir(Function.prototype) // her accesser man prototype-objektet til objektet Function
+
+// console.dir(Function.__proto__) // i dette tilfellet henviser Function til konstruktør-funksjonen Function, og ikke objektet Function. Man ser altså på .__prot__ attributten til konstruktør-funksjonen Function her (i nyere javaScript skrevet som [[Prototype]])
+
+// console.dir(Function.__proto__ === Function.prototype) // grunnen til at dette returnerer 'true' er fordi begge deler peker til ett og samme objekt, dette er bare bestemt av utviklerne av javaScript
+
+// recursion
+
+// function powerOf(x, n) {
+//   if (n === 1) {
+//     return 10
+//   }
+//   return x * powerOf(x, n - 1)
+// }
+
+// let test = powerOf(2, 3)
+
+// console.log(test)
+
+// Forklaring: Intil n === 1 stackes bare funksjoner oppå hverandre i call stacken, uten å returnere noen verdi (fordi funksjonene ikke resolves). Deretter jobber callstacken seg nedover, og begynner å returne verdier. Den begynner på den siste funksjonen som ble kjørt, som er if-statementen (return-verdien til powerOf er da 10). Ettersom callstacken jobber seg nedover tar den alltid utgangspunkt i siste return-verdi fra powerOf. Første gang er return-verdien 10, deretter på 20 (x * 10), og deretter 40 (x * 20).
+
+// recursion ferdig
+
+// currying
+
+// function curried(arg) {
+//   return function inside(params) {
+//     return arg + params
+//   }
+// }
+
+// const plusFive = curried(5)
+
+// console.log(plusFive(7))
+
+// IIFE
+
+// (function test() {
+//   console.log('test 9t99t9t9t')
+// })()
+
